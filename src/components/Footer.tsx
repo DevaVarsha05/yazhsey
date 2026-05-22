@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, ExternalLink, Shield, Award } from "lucide-react";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
+  { label: "Home",      href: "#home" },
+  { label: "Services",  href: "#services" },
   { label: "Solutions", href: "#solutions" },
-  { label: "About", href: "#about" },
+  { label: "About",     href: "#about" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact",   href: "#contact" },
 ];
 
 const services = [
@@ -17,7 +17,7 @@ const services = [
   "Mobile App Development",
   "Custom Software",
   "CRM & ERP Solutions",
-  "Billing Software",
+  "Billing & Inventory Software",
   "IT Consulting",
 ];
 
@@ -27,56 +27,67 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{ background: "#111111", color: "#ffffff" }}>
-      {/* Top accent line */}
-      <div className="h-[2px]" style={{ background: "linear-gradient(90deg, #E11D8A, #A3E635, #FF5E6B, #E11D8A)" }} />
+    <footer style={{ background: "#121415" }}>
+      {/* Top Accent Line */}
+      <div
+        className="h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, #059669, transparent)" }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+          {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <div className="relative w-11 h-11 flex-shrink-0">
                 <Image src="/logo.png" alt="Yazhsey Technologies" fill className="object-contain" />
               </div>
               <div>
-                <div className="text-base font-black" style={{ color: "#ffffff" }}>
+                <div className="text-base font-black font-heading" style={{ color: "#E5E7EB" }}>
                   Yazh<span className="gradient-text">Sey</span>
                 </div>
-                <div className="text-[9px] tracking-[0.15em] uppercase font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <div className="text-[9px] tracking-[0.2em] uppercase font-semibold font-mono" style={{ color: "#6B7280" }}>
                   Technologies
                 </div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.45)" }}>
-              Professional IT services and software development company based in Dindigul, Tamil Nadu.
-              Delivering digital excellence to businesses across India.
+            <p className="text-sm leading-relaxed mb-6 font-body" style={{ color: "#6B7280" }}>
+              Professional IT services and software development founded in Dindigul, Tamil Nadu. Crafting digital excellence for businesses across India.
             </p>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <span className="font-semibold" style={{ color: "#E11D8A" }}>GST:</span>
-                <span className="font-mono">33CGSPK6933J1ZV</span>
+            {/* Legal IDs */}
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2 text-xs font-body">
+                <Shield size={12} style={{ color: "#059669", flexShrink: 0 }} />
+                <span className="font-semibold" style={{ color: "#9CA3AF" }}>GST:</span>
+                <span className="font-mono" style={{ color: "#6B7280" }}>33CGSPK6933J1ZV</span>
               </div>
-              <div className="flex items-center gap-2 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <span className="font-semibold" style={{ color: "#A3E635" }}>Udyam:</span>
-                <span className="font-mono">UDYAM-TN-06-0116309</span>
+              <div className="flex items-center gap-2 text-xs font-body">
+                <Award size={12} style={{ color: "#059669", flexShrink: 0 }} />
+                <span className="font-semibold" style={{ color: "#9CA3AF" }}>Udyam:</span>
+                <span className="font-mono" style={{ color: "#6B7280" }}>UDYAM-TN-06-0116309</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-[0.15em] mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>Quick Links</h4>
+            <h4
+              className="text-xs font-bold uppercase tracking-[0.18em] mb-5 font-body"
+              style={{ color: "#6B7280" }}
+            >
+              Quick Links
+            </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <button
                     onClick={() => handleNav(link.href)}
-                    className="text-sm transition-colors"
-                    style={{ color: "rgba(255,255,255,0.55)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#E11D8A")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                    className="text-sm font-body text-left transition-colors"
+                    style={{ color: "#9CA3AF" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#059669")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
                   >
                     {link.label}
                   </button>
@@ -87,16 +98,21 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-[0.15em] mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>Services</h4>
+            <h4
+              className="text-xs font-bold uppercase tracking-[0.18em] mb-5 font-body"
+              style={{ color: "#6B7280" }}
+            >
+              Services
+            </h4>
             <ul className="space-y-2.5">
               {services.map((s) => (
                 <li key={s}>
                   <button
                     onClick={() => handleNav("#services")}
-                    className="text-sm transition-colors text-left"
-                    style={{ color: "rgba(255,255,255,0.55)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#A3E635")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                    className="text-sm font-body text-left transition-colors"
+                    style={{ color: "#9CA3AF" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#059669")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
                   >
                     {s}
                   </button>
@@ -107,32 +123,45 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-[0.15em] mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>Contact</h4>
+            <h4
+              className="text-xs font-bold uppercase tracking-[0.18em] mb-5 font-body"
+              style={{ color: "#6B7280" }}
+            >
+              Contact Us
+            </h4>
             <div className="space-y-4">
-              <a href="tel:+917373114666" className="flex items-start gap-3 text-sm transition-colors" style={{ color: "rgba(255,255,255,0.55)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#E11D8A")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+              <a
+                href="tel:+917373114666"
+                className="flex items-start gap-3 text-sm font-body transition-colors"
+                style={{ color: "#9CA3AF" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#059669")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
               >
-                <Phone size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#E11D8A" }} />
+                <Phone size={13} className="flex-shrink-0 mt-0.5" style={{ color: "#059669" }} />
                 +91 73731 14666
               </a>
-              <a href="mailto:yazhseytech@gmail.com" className="flex items-start gap-3 text-sm transition-colors" style={{ color: "rgba(255,255,255,0.55)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#E11D8A")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+              <a
+                href="mailto:yazhseytech@gmail.com"
+                className="flex items-start gap-3 text-sm font-body transition-colors"
+                style={{ color: "#9CA3AF" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#059669")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#9CA3AF")}
               >
-                <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#E11D8A" }} />
+                <Mail size={13} className="flex-shrink-0 mt-0.5" style={{ color: "#059669" }} />
                 yazhseytech@gmail.com
               </a>
-              <div className="flex items-start gap-3 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <MapPin size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#A3E635" }} />
-                3/37, Karaiyampatti, Vedasandur Block, Nagayakottai, Dindigul, Tamil Nadu - 624706
+              <div className="flex items-start gap-3 text-sm font-body" style={{ color: "#6B7280" }}>
+                <MapPin size={13} className="flex-shrink-0 mt-0.5" style={{ color: "#059669" }} />
+                <span>3/37, Karaiyampatti, Vedasandur Block, Nagayakottai, Dindigul, Tamil Nadu — 624706</span>
               </div>
               <a
                 href="https://maps.google.com/?q=Nagayakottai+Dindigul+Tamil+Nadu"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold"
-                style={{ color: "#E11D8A" }}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold font-body transition-colors"
+                style={{ color: "#059669" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#047857")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#059669")}
               >
                 View on Map <ExternalLink size={10} />
               </a>
@@ -141,40 +170,43 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px mb-8" style={{ background: "rgba(255,255,255,0.08)" }} />
+        <div className="h-px mb-8" style={{ background: "#2D3134" }} />
 
         {/* Legal Badges */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {[
-            { label: "GST Registered", value: "33CGSPK6933J1ZV", color: "#E11D8A" },
-            { label: "Udyam Certified", value: "UDYAM-TN-06-0116309", color: "#A3E635" },
-            { label: "Micro Enterprise", value: "Tamil Nadu, India", color: "#FF5E6B" },
+            { label: "GST Registered",   value: "33CGSPK6933J1ZV",    color: "#059669" },
+            { label: "Udyam Certified",  value: "UDYAM-TN-06-0116309", color: "#059669" },
+            { label: "Micro Enterprise", value: "Tamil Nadu, India",   color: "#9CA3AF" },
           ].map((badge) => (
             <div
               key={badge.label}
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-xs"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-body"
               style={{
-                border: `1px solid ${badge.color}25`,
-                background: `${badge.color}10`,
+                border: `1px solid ${badge.color}30`,
+                background: `${badge.color}08`,
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: badge.color }} />
               <span className="font-semibold" style={{ color: badge.color }}>{badge.label}:</span>
-              <span className="font-mono" style={{ color: "rgba(255,255,255,0.55)" }}>{badge.value}</span>
+              <span className="font-mono" style={{ color: "#6B7280" }}>{badge.value}</span>
             </div>
           ))}
         </div>
 
-        {/* Bottom */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+        {/* Bottom Bar */}
+        <div
+          className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-body"
+          style={{ color: "#4B5563" }}
+        >
           <p>
             © {new Date().getFullYear()}{" "}
-            <span style={{ color: "rgba(255,255,255,0.6)" }}>Ponnusamy Kavivarthini (Proprietorship)</span>
+            <span style={{ color: "#9CA3AF" }}>Ponnusamy Kavivarthini (Proprietorship)</span>
             {" "}· Trading as{" "}
             <span className="gradient-text font-bold">Yazhsey Technologies</span>
           </p>
           <p className="flex items-center gap-1">
-            Made with <span style={{ color: "#E11D8A" }}>♥</span> in Tamil Nadu, India
+            Crafted with <span style={{ color: "#059669" }}>⚡</span> in Tamil Nadu, India
           </p>
         </div>
       </div>

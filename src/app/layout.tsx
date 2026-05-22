@@ -1,20 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Yazhsey Technologies | Website, Mobile App & Software Development",
@@ -25,7 +10,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Yazhsey Technologies" }],
   creator: "Yazhsey Technologies",
   openGraph: {
-    title: "Yazhsey Technologies | Crafting Digital Excellence",
+    title: "Yazhsey Technologies | Software Development",
     description:
       "Professional IT services and software development company in Tamil Nadu. Websites, Apps, CRM, ERP, Billing Software.",
     type: "website",
@@ -40,10 +25,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${outfit.variable} ${inter.variable} font-[family-name:var(--font-outfit)] antialiased`}
-        style={{ background: "#FAF9F6", color: "#1F1F1F" }}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body style={{ background: "#181A1B", color: "#E5E7EB" }}>
         {children}
       </body>
     </html>
