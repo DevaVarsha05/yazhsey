@@ -86,10 +86,8 @@ export default function Testimonials() {
       className="relative py-28 overflow-hidden"
       style={{ background: "#181A1B" }}
     >
-      {/* Top divider */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "#2D3134" }} />
 
-      {/* Ambient blobs */}
       <div
         className="absolute top-1/4 left-0 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(5,150,105,0.04) 0%, transparent 70%)" }}
@@ -100,7 +98,6 @@ export default function Testimonials() {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -116,7 +113,6 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -130,19 +126,18 @@ export default function Testimonials() {
               dragConstraints={{ left: 0, right: 0 }}
               onDrag={(_, info) => dragX.set(info.offset.x)}
               onDragEnd={handleDragEnd}
-              style={{ rotate: rotateCard }}
               initial={{ opacity: 0, x: 50, scale: 0.97 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -50, scale: 0.97 }}
               transition={{ duration: 0.38 }}
               className="p-8 sm:p-12 rounded-2xl cursor-grab active:cursor-grabbing select-none relative overflow-hidden"
               style={{
+                rotate: rotateCard,
                 background: "#222527",
                 border: `1px solid ${t.accentColor}25`,
                 boxShadow: `0 0 32px ${t.accentColor}10`,
               }}
             >
-              {/* Decorative tech rings */}
               <div className="absolute top-0 right-0 w-32 h-32 pointer-events-none" style={{ opacity: 0.08 }}>
                 <svg viewBox="0 0 128 128" fill="none">
                   <circle cx="128" cy="0" r="80"  stroke={t.accentColor} strokeWidth="1" strokeDasharray="4 4" />
@@ -151,7 +146,6 @@ export default function Testimonials() {
                 </svg>
               </div>
 
-              {/* Stars */}
               <div className="flex gap-1 mb-5">
                 {[...Array(t.rating)].map((_, i) => (
                   <Star key={i} size={16} style={{ color: "#059669", fill: "#059669" }} />
@@ -187,7 +181,6 @@ export default function Testimonials() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <motion.button
               whileHover={{ scale: 1.08 }}
