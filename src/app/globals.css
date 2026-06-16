@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+@theme {
+  /* === MATTE GUNMETAL & EMERALD PALETTE === */
+--color-canvas:          #FFFFFF;
+--color-surface:         #F3F4F6;
+--color-divider:         #D1D5DB;
+--color-text-primary:    #111827;
+--color-text-secondary:  #4B5563;
+  --color-accent-emerald:  #059669;
+  --color-accent-alert:    #DC2626;
+
+  /* Semantic aliases */
+--color-bg-main:         #FFFFFF;
+--color-bg-card:         #F3F4F6;
+--color-bg-dark:         #E5E7EB;
+--color-border:          #D1D5DB;
+  --color-accent-primary:    #059669;
+ --color-accent-secondary: #111827;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────────────────── */
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.8; }
+}
+
+@keyframes grid-fade {
+  0%, 100% { opacity: 0.03; }
+  50%      { opacity: 0.06; }
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────────── */
+
+@layer base {
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(5, 150, 105, 0.3);
+    color: #E5E7EB;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #111827;
+    overflow-x: hidden;
+    line-height: 1.65;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+   background: #F3F4F6;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2D3134;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+  }
+}
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
+
+@layer utilities {
+
+  /* Font families */
+  .font-heading { font-family: "Inter", system-ui, sans-serif; }
+  .font-body    { font-family: "Inter", system-ui, sans-serif; }
+  .font-mono    { font-family: "JetBrains Mono", "Fira Code", monospace; }
+
+  /* Gradient text — Emerald to Ivory sweep */
+  .gradient-text {
+    background: linear-gradient(135deg, #059669 0%, #E5E7EB 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Emerald glow text */
+  .glow-text {
+    color: #059669;
+    text-shadow: 0 0 20px rgba(5, 150, 105, 0.4), 0 0 40px rgba(5, 150, 105, 0.15);
+  }
+
+  /* Animations */
+  .animate-pulse-soft   { animation: pulse-soft 2.5s ease-in-out infinite; }
+  .animate-float-up     { animation: float-up 3.5s ease-in-out infinite; }
+  .animate-glow-pulse   { animation: glow-pulse 3s ease-in-out infinite; }
+  .animate-grid-fade    { animation: grid-fade 4s ease-in-out infinite; }
+
+  /* Tech grid background */
+  .tech-grid-bg {
+    background-image:
+     linear-gradient(rgba(209, 213, 219, 0.6) 1px, transparent 1px)
+      linear-gradient(90deg, rgba(45, 49, 52, 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Pill / badge */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #D1D5DB;
+background: #F3F4F6;
+color: #4B5563;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Buttons ── */
+
+  /* Primary CTA — Emerald bg with dark text */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #181A1B;
+    background: #059669;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.25), 0 4px 12px rgba(5, 150, 105, 0.15);
+    font-family: "Inter", system-ui, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: #047857;
+    box-shadow: 0 0 32px rgba(5, 150, 105, 0.4), 0 6px 20px rgba(5, 150, 105, 0.25);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 0 16px rgba(5, 150, 105, 0.2);
+  }
+
+  /* Secondary Ghost button — transparent, 1px border, emerald hover */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827;
+    background: transparent;
+    border: 1px solid #2D3134;
+    transition: all 0.2s ease-in-out;
+    font-family: "Inter", system-ui, sans-serif;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    border-color: #059669;
+    background: rgba(5, 150, 105, 0.08);
+    color: #059669;
+  }
+
+  /* Global smooth transitions */
+  a, button, input, textarea, select {
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+                border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+                transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+
+  /* Form input base */
+  .input-quantum {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #2D3134;
+    border: 1px solid #D1D5DB;
+background: #FFFFFF;
+color: #111827;
+    font-size: 14px;
+    outline: none;
+    font-family: "Inter", system-ui, sans-serif;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .input-quantum::placeholder {
+    color: #6B7280;
+  }
+  .input-quantum:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15), 0 0 12px rgba(5, 150, 105, 0.1);
+  }
+}
