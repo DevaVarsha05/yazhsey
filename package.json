@@ -1,5 +1,5 @@
 {
-  "name": "yazhsey-tech",
+  "name": "YazhSey-tech",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,9 +27,5 @@
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
+  }}
+
