@@ -2,21 +2,38 @@
 
 @theme {
   /* === MATTE GUNMETAL & EMERALD PALETTE === */
+<<<<<<< HEAD
 --color-canvas:          #FFFFFF;
 --color-surface:         #F3F4F6;
 --color-divider:         #D1D5DB;
 --color-text-primary:    #111827;
 --color-text-secondary:  #4B5563;
+=======
+  --color-canvas:       #181A1B;
+  --color-surface:      #222527;
+  --color-divider:      #2D3134;
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #9CA3AF;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
   --color-accent-emerald:  #059669;
   --color-accent-alert:    #DC2626;
 
   /* Semantic aliases */
+<<<<<<< HEAD
 --color-bg-main:         #FFFFFF;
 --color-bg-card:         #F3F4F6;
 --color-bg-dark:         #E5E7EB;
 --color-border:          #D1D5DB;
   --color-accent-primary:    #059669;
  --color-accent-secondary: #111827;
+=======
+  --color-bg-main:           #181A1B;
+  --color-bg-card:           #222527;
+  --color-bg-dark:           #121415;
+  --color-border:            #2D3134;
+  --color-accent-primary:    #059669;
+  --color-accent-secondary:  #E5E7EB;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
 }
 
 /* ─── Keyframes ─────────────────────────────────────────────────────────────── */
@@ -67,8 +84,13 @@
   }
 
   body {
+<<<<<<< HEAD
     background-color: #FFFFFF;
     color: #111827;
+=======
+    background-color: #181A1B;
+    color: #E5E7EB;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     overflow-x: hidden;
     line-height: 1.65;
     font-family: "Inter", system-ui, sans-serif;
@@ -88,7 +110,11 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
+<<<<<<< HEAD
    background: #F3F4F6;
+=======
+    background: #181A1B;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
   }
   ::-webkit-scrollbar-thumb {
     background: #2D3134;
@@ -131,7 +157,11 @@
   /* Tech grid background */
   .tech-grid-bg {
     background-image:
+<<<<<<< HEAD
      linear-gradient(rgba(209, 213, 219, 0.6) 1px, transparent 1px)
+=======
+      linear-gradient(rgba(45, 49, 52, 0.4) 1px, transparent 1px),
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
       linear-gradient(90deg, rgba(45, 49, 52, 0.4) 1px, transparent 1px);
     background-size: 48px 48px;
   }
@@ -156,9 +186,15 @@
     border-radius: 999px;
     font-size: 12px;
     font-weight: 500;
+<<<<<<< HEAD
     border: 1px solid #D1D5DB;
 background: #F3F4F6;
 color: #4B5563;
+=======
+    border: 1px solid #2D3134;
+    background: #222527;
+    color: #9CA3AF;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     font-family: "Inter", system-ui, sans-serif;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -203,7 +239,11 @@ color: #4B5563;
     border-radius: 12px;
     font-weight: 600;
     font-size: 14px;
+<<<<<<< HEAD
     color: #111827;
+=======
+    color: #E5E7EB;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     background: transparent;
     border: 1px solid #2D3134;
     transition: all 0.2s ease-in-out;
@@ -229,9 +269,14 @@ color: #4B5563;
     padding: 12px 16px;
     border-radius: 12px;
     border: 1px solid #2D3134;
+<<<<<<< HEAD
     border: 1px solid #D1D5DB;
 background: #FFFFFF;
 color: #111827;
+=======
+    background: #181A1B;
+    color: #E5E7EB;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     font-size: 14px;
     outline: none;
     font-family: "Inter", system-ui, sans-serif;

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+<<<<<<< HEAD
 import { BarChart3, FileText, Users, TrendingUp, Shield, Cog, X } from "lucide-react";
 
 // Type definitions
@@ -219,6 +220,11 @@ const employeeData = {
 };
 
 const solutions: Solution[] = [
+=======
+import { BarChart3, FileText, Users, TrendingUp, Shield, Cog } from "lucide-react";
+
+const solutions = [
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
   {
     id: "crm",
     label: "CRM System",
@@ -252,7 +258,11 @@ const solutions: Solution[] = [
       "Multi-branch Support",
       "Tally Integration Ready",
     ],
+<<<<<<< HEAD
     accentColor: "#2563EB",
+=======
+    accentColor: "#059669",
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     stats: [{ v: "60%", l: "Ops Efficiency Gain" }, { v: "100%", l: "Data Visibility" }],
   },
   {
@@ -270,7 +280,11 @@ const solutions: Solution[] = [
       "Profit & Loss Reports",
       "E-Invoice Generation",
     ],
+<<<<<<< HEAD
     accentColor: "#D97706",
+=======
+    accentColor: "#059669",
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     stats: [{ v: "10x", l: "Faster Billing" }, { v: "Zero", l: "GST Errors" }],
   },
   {
@@ -288,11 +302,16 @@ const solutions: Solution[] = [
       "Multi-source Data Integration",
       "Scheduled Email Reports",
     ],
+<<<<<<< HEAD
     accentColor: "#7C3AED",
+=======
+    accentColor: "#059669",
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
     stats: [{ v: "5x", l: "Faster Decisions" }, { v: "360°", l: "Business View" }],
   },
 ];
 
+<<<<<<< HEAD
 // ==================== MAIN SOLUTIONS COMPONENT ====================
 
 export default function Solutions() {
@@ -305,12 +324,21 @@ export default function Solutions() {
 
   const activeSolution = solutions.find((s: Solution) => s.id === active)!;
   const ActiveIcon = activeSolution.icon;
+=======
+export default function Solutions() {
+  const ref    = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [active, setActive] = useState("crm");
+  const activeSolution = solutions.find((s) => s.id === active)!;
+  const ActiveIcon     = activeSolution.icon;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
 
   return (
     <section
       ref={ref}
       id="solutions"
       className="relative py-28 overflow-hidden"
+<<<<<<< HEAD
       style={{ background: "#FFFFFF", position: "relative" }}
     >
       {/* Ambient glow */}
@@ -322,6 +350,15 @@ export default function Solutions() {
         className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
         style={{ background: `radial-gradient(circle, ${activeSolution.accentColor}10 0%, transparent 70%)` }}
       />
+=======
+      style={{ background: "#181A1B" }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(5,150,105,0.05) 0%, transparent 70%)" }} />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(5,150,105,0.05) 0%, transparent 70%)" }} />
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Header */}
@@ -332,6 +369,7 @@ export default function Solutions() {
           className="text-center mb-14"
         >
           <div className="pill mb-5 mx-auto" style={{ display: "inline-flex" }}>
+<<<<<<< HEAD
             <TrendingUp size={12} style={{ color: activeSolution.accentColor }} />
             <span>Our Solutions</span>
           </div>
@@ -339,6 +377,15 @@ export default function Solutions() {
             Purpose-Built <span className="gradient-text">Business Software</span>
           </h2>
           <p className="mt-4 max-w-lg mx-auto text-sm font-body" style={{ color: "#4B5563" }}>
+=======
+            <TrendingUp size={12} style={{ color: "#059669" }} />
+            <span>Our Solutions</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black font-heading" style={{ color: "#E5E7EB" }}>
+            Purpose-Built <span className="gradient-text">Business Software</span>
+          </h2>
+          <p className="mt-4 max-w-lg mx-auto text-sm font-body" style={{ color: "#9CA3AF" }}>
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
             Explore our flagship products designed specifically for Indian businesses — from startups to enterprises.
           </p>
         </motion.div>
@@ -350,8 +397,13 @@ export default function Solutions() {
           transition={{ delay: 0.18, duration: 0.55 }}
           className="flex flex-wrap justify-center gap-2.5 mb-12"
         >
+<<<<<<< HEAD
           {solutions.map((s: Solution) => {
             const Icon = s.icon;
+=======
+          {solutions.map((s) => {
+            const Icon    = s.icon;
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
             const isActive = active === s.id;
             return (
               <motion.button
@@ -361,10 +413,17 @@ export default function Solutions() {
                 whileTap={{ scale: 0.97 }}
                 className="relative flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold font-body"
                 style={{
+<<<<<<< HEAD
                   background: isActive ? s.accentColor : "#F3F4F6",
                   border: isActive ? `1px solid ${s.accentColor}` : "1px solid #D1D5DB",
                   color: isActive ? "#FFFFFF" : "#4B5563",
                   boxShadow: isActive ? `0 0 20px ${s.accentColor}40` : "none",
+=======
+                  background: isActive ? "#059669" : "transparent",
+                  border:     isActive ? "1px solid #059669" : "1px solid #2D3134",
+                  color:      isActive ? "#181A1B"  : "#9CA3AF",
+                  boxShadow:  isActive ? "0 0 20px rgba(5,150,105,0.25)" : "none",
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
                 }}
               >
                 <Icon size={14} />
@@ -384,6 +443,7 @@ export default function Solutions() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="grid lg:grid-cols-2 gap-12 items-center"
           >
+<<<<<<< HEAD
             {/* Left — Solution Details */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
@@ -398,16 +458,34 @@ export default function Solutions() {
                     {activeSolution.tagline}
                   </div>
                   <h3 className="text-2xl font-black font-heading" style={{ color: "#111827" }}>
+=======
+            {/* Left — Details */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl" style={{ background: `${activeSolution.accentColor}12`, border: `1px solid ${activeSolution.accentColor}25` }}>
+                  <ActiveIcon size={22} style={{ color: activeSolution.accentColor }} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest font-semibold font-mono" style={{ color: "#9CA3AF" }}>
+                    {activeSolution.tagline}
+                  </div>
+                  <h3 className="text-2xl font-black font-heading" style={{ color: "#E5E7EB" }}>
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
                     {activeSolution.label}
                   </h3>
                 </div>
               </div>
 
+<<<<<<< HEAD
               <p className="text-sm leading-relaxed font-body" style={{ color: "#4B5563" }}>
+=======
+              <p className="text-sm leading-relaxed font-body" style={{ color: "#9CA3AF" }}>
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
                 {activeSolution.description}
               </p>
 
               <div className="flex gap-10">
+<<<<<<< HEAD
                 {activeSolution.stats.map((s: { v: string; l: string }) => (
                   <div key={s.l}>
                     <div className="text-3xl font-black font-heading glow-text" style={{ color: activeSolution.accentColor }}>
@@ -416,13 +494,24 @@ export default function Solutions() {
                     <div className="text-xs mt-0.5 font-body" style={{ color: "#6B7280" }}>
                       {s.l}
                     </div>
+=======
+                {activeSolution.stats.map((s) => (
+                  <div key={s.l}>
+                    <div className="text-3xl font-black font-heading glow-text">{s.v}</div>
+                    <div className="text-xs mt-0.5 font-body" style={{ color: "#9CA3AF" }}>{s.l}</div>
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
                   </div>
                 ))}
               </div>
 
               <div className="grid grid-cols-2 gap-2.5">
+<<<<<<< HEAD
                 {activeSolution.features.map((f: string) => (
                   <div key={f} className="flex items-start gap-2 text-sm font-body" style={{ color: "#111827" }}>
+=======
+                {activeSolution.features.map((f) => (
+                  <div key={f} className="flex items-start gap-2 text-sm font-body" style={{ color: "#E5E7EB" }}>
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
                     <div
                       className="w-4 h-4 rounded flex items-center justify-center mt-0.5 flex-shrink-0"
                       style={{ background: `${activeSolution.accentColor}15`, border: `1px solid ${activeSolution.accentColor}25` }}
@@ -436,6 +525,7 @@ export default function Solutions() {
 
               <motion.a
                 href="#contact"
+<<<<<<< HEAD
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   e.preventDefault();
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -1175,3 +1265,84 @@ export default function Solutions() {
     </section>
   );
 }
+=======
+                onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="btn-primary inline-flex"
+              >
+                Request a Demo
+              </motion.a>
+            </div>
+
+            {/* Right — IDE-style Mockup */}
+            <div
+              className="relative h-80 lg:h-[420px] rounded-2xl overflow-hidden"
+              style={{
+                background: "#222527",
+                border: `1px solid ${activeSolution.accentColor}20`,
+              }}
+            >
+              {/* Window chrome */}
+              <div className="absolute top-0 left-0 right-0 h-9 flex items-center px-4 gap-4" style={{ background: "#181A1B", borderBottom: "1px solid #2D3134" }}>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#DC2626" }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#D97706" }} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#059669" }} />
+                </div>
+                <div className="flex-1 h-5 rounded-md" style={{ background: "#222527", border: "1px solid #2D3134" }} />
+              </div>
+
+              <div className="absolute inset-0 top-9 p-4 flex flex-col gap-3">
+                {/* Stat cards */}
+                <div className="grid grid-cols-3 gap-2">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-16 rounded-xl flex flex-col items-center justify-center gap-1.5"
+                      style={{ background: "#181A1B", border: "1px solid #2D3134" }}
+                    >
+                      <div className="h-3.5 w-12 rounded" style={{ background: `${activeSolution.accentColor}30` }} />
+                      <div className="h-2 w-16 rounded" style={{ background: "#2D3134" }} />
+                    </div>
+                  ))}
+                </div>
+
+                {/* List panel */}
+                <div
+                  className="flex-1 rounded-xl p-3"
+                  style={{ background: "#181A1B", border: "1px solid #2D3134" }}
+                >
+                  <div className="h-3 w-24 rounded mb-3" style={{ background: "#2D3134" }} />
+                  <div className="space-y-2">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded flex-shrink-0" style={{ background: `${activeSolution.accentColor}15` }} />
+                        <div className="h-2.5 rounded flex-1" style={{ background: "#2D3134", width: `${60 + i * 8}%` }} />
+                        <div className="h-5 w-12 rounded" style={{ background: `${activeSolution.accentColor}10`, border: `1px solid ${activeSolution.accentColor}20` }} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom row */}
+                <div className="grid grid-cols-2 gap-2">
+                  {[0, 1].map((i) => (
+                    <div key={i} className="h-12 rounded-xl" style={{ background: "#181A1B", border: "1px solid #2D3134" }} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Accent glow */}
+              <div
+                className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full pointer-events-none"
+                style={{ background: `radial-gradient(circle, ${activeSolution.accentColor}10 0%, transparent 70%)` }}
+              />
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
+>>>>>>> 651f5d895425374964aef8ac23ca4e7ae1c00ccf
