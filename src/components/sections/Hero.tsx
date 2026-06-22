@@ -91,7 +91,7 @@ export default function Hero() {
         </svg>
       </motion.div>
 
-      {/* Second ring — bottom-left reacting to mouse */}
+   
       <motion.div
         className="absolute bottom-20 left-12 hidden xl:block"
         style={{ width: 140, height: 140, x: useTransform(springX, [-1, 1], [20, -20]), y: useTransform(springY, [-1, 1], [20, -20]), position: "absolute" }}
