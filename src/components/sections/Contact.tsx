@@ -109,7 +109,15 @@ export default function Contact() {
           >
             <div
               className="p-6 sm:p-10 rounded-2xl relative overflow-hidden"
-              style={{ background: "#FFFFFF", border: "1px solid #D1D5DB", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
+             style={{ 
+    backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/contact us.webp')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat", // Ithu add panna image repeat aagathu
+    padding: "32px", 
+    borderRadius: "20px", 
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)" 
+  }}
             >
               {/* Dot grid background */}
               <div className="absolute inset-0 opacity-40 pointer-events-none"
@@ -140,7 +148,15 @@ export default function Contact() {
                   </button>
                 </motion.div>
               ) : (
-               <form onSubmit={handleSubmit} className="relative z-10 space-y-5" style={{ background: "#F3F4F6", padding: "32px", borderRadius: "20px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)" }}>
+               <form onSubmit={handleSubmit} className="relative z-10 space-y-5" style={{ 
+    backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/contact us.webp')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat", // Ithu add panna image repeat aagathu
+    padding: "32px", 
+    borderRadius: "20px", 
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)" 
+  }}>
   <div className="grid sm:grid-cols-2 gap-5">
     <div className="space-y-1.5">
       <label className="text-[11px] font-bold uppercase tracking-wider font-mono" style={{ color: "#6B7280" }}>Full Name</label>

@@ -3,18 +3,21 @@
 import { useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
 import { Globe, Smartphone, Code2, BarChart3, FileText, Settings, MessageCircle, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const services = [
-  { icon: Globe, title: "Website Development", description: "Blazing-fast, SEO-optimized websites and web apps. From elegant landing pages to enterprise portals, built with modern technology stacks.", accentColor: "#059669", tags: ["Next.js", "React", "SEO", "Responsive"] },
-  { icon: Smartphone, title: "Mobile App Development", description: "Native-feel iOS & Android apps built with Flutter or React Native. Beautiful interfaces, seamless performance, offline-ready architecture.", accentColor: "#059669", tags: ["Flutter", "iOS", "Android", "Cross-platform"] },
-  { icon: Code2, title: "Custom Software Development", description: "Tailor-made software solutions engineered to solve your unique business challenges. Scalable, secure, and thoroughly documented.", accentColor: "#059669", tags: ["Python", "Node.js", "Microservices", "REST APIs"] },
-  { icon: BarChart3, title: "CRM Solutions", description: "End-to-end Customer Relationship Management systems to streamline your sales pipeline, automate follow-ups, and gain deep client insights.", accentColor: "#059669", tags: ["CRM", "Automation", "Analytics", "WhatsApp"] },
-  { icon: Settings, title: "ERP Systems", description: "Comprehensive Enterprise Resource Planning platforms connecting Finance, HR, Inventory, and Operations in a single unified workflow.", accentColor: "#059669", tags: ["ERP", "Finance", "HR", "Multi-branch"] },
-  { icon: FileText, title: "Billing & Inventory Software", description: "GST-compliant billing, invoicing, and inventory management systems purpose-built for retail, wholesale, and manufacturing businesses.", accentColor: "#059669", tags: ["GST", "Invoicing", "Inventory", "E-Invoice"] },
-  { icon: MessageCircle, title: "WhatsApp Bot Development", description: "Intelligent WhatsApp bots to automate customer support, lead generation, and order management. AI-powered conversations that convert, scale, and engage your audience 24/7.", accentColor: "#059669", tags: ["WhatsApp API", "Chatbot", "AI", "Automation"] },
+  { icon: Globe, title: "Website Development", description: "Blazing-fast, SEO-optimized websites and web apps with AI-powered personalization and intelligent chatbots, built with modern technology stacks.", accentColor: "#059669", tags: ["Next.js", "React", "SEO", "AI", "Responsive"], image: "/webdev.webp" },
+  { icon: Smartphone, title: "Mobile App Development", description: "Native-feel iOS & Android apps with AI features like voice recognition, predictive recommendations, and intelligent automation.  offline-ready architecture.", accentColor: "#059669", tags: ["Flutter", "iOS", "Android", "AI", "Cross-platform"], image: "/mobileapp.webp" },
+  { icon: Code2, title: "Custom Software Development", description: "Tailor-made software solutions with AI integration for automation and intelligent decision-making. Engineered to solve your unique business challenges with scalable and  secure",accentColor: "#059669", tags: ["Python", "Node.js", "AI", "Microservices", "REST APIs"], image: "/customerdev.webp" },
+  { icon: BarChart3, title: "CRM Solutions", description: "End-to-end Customer Relationship Management systems to streamline your sales pipeline, automate follow-ups, and gain deep client insights.", tags: ["CRM", "Automation", "Analytics", "WhatsApp"], image: "/crmimage.webp" },
+  { icon: Settings, title: "ERP Systems", description:"Comprehensive Enterprise Resource Planning platforms connecting Finance, HR, Inventory, and Operations in a single unified workflow.",  accentColor: "#059669", tags: ["ERP", "Finance",  "HR", "Multi-branch"], image: "/ERPimg.webp" },
+  { icon: FileText, title: "Billing & Inventory Software", description: "AI-powered GST-compliant billing, invoicing, and inventory management with smart demand forecasting and automated stock optimization. ",accentColor: "#059669", tags: ["GST", "Invoicing", "AI", "Inventory", "E-Invoice"], image: "/billing.webp" },
+  { icon: MessageCircle, title: "WhatsApp AI Bot", description: "Intelligent WhatsApp chatbots to automate customer support, lead generation, and order management. AI-powered conversations that convert, scale, and engage your audience 24/7.", accentColor: "#059669", tags: ["WhatsApp API", "Chatbot", "AI", "Automation"], image: "/whatsappchatbot.webp" },
 ];
 
+
 function ServiceCard({ service, index, inView }: { service: typeof services[0]; index: number; inView: boolean }) {
+  const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -35,60 +38,52 @@ function ServiceCard({ service, index, inView }: { service: typeof services[0]; 
   return (
     <motion.div
       ref={cardRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.215, 0.61, 0.355, 1] }}
-      whileHover={{ 
-        scale: 1.02, 
-        y: -5, 
-        boxShadow: `0 15px 30px ${service.accentColor}20` 
-      }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ scale: 1.02, y: -5 }}
       onMouseMove={handleMouseMove}
-      className="group relative p-7 rounded-2xl cursor-pointer overflow-hidden transition-all duration-300"
-      style={{
-        background: "#FFFFFF",
-        border: "1px solid #D1D5DB",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-        position: "relative",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${service.accentColor}50`;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "#D1D5DB";
-      }}
+      className={`group relative overflow-hidden transition-all duration-300 border rounded-2xl h-64 ${isHovered ? "border-emerald-500" : "border-gray-300"}`}
     >
-      {/* Dynamic Cursor Spotlight */}
+      {/* Background Image - Full Cover */}
+      <div
+        className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+        style={{ backgroundImage: `url('${service.image}')` }}
+      />
+
+      {/* Dark Overlay - Transparent Black */}
+      <div className="absolute inset-0 bg-black/60 group-hover:bg-black/65 transition-all duration-300" />
+
+      {/* Gradient Overlay on Hover */}
       <motion.div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{ background: backgroundStyle }}
       />
 
-      <div className="flex items-start justify-between mb-5 relative z-10">
-        <div className="p-3 rounded-xl transition-transform duration-300 group-hover:scale-110" style={{ background: `${service.accentColor}12`, border: `1px solid ${service.accentColor}20` }}>
-          <Icon size={20} style={{ color: service.accentColor }} />
+      {/* Content Container - Positioned Absolutely */}
+      <div className="absolute inset-0 p-7 flex flex-col justify-between relative z-10">
+        <div className="flex items-start justify-between">
+          <div className="p-3 rounded-xl backdrop-blur-sm" style={{ background: `${service.accentColor}20`, border: `1px solid ${service.accentColor}40` }}>
+            <Icon size={20} style={{ color: "#ffffff" }} />
+          </div>
         </div>
-        <div className="p-2 rounded-lg opacity-0 scale-70 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" style={{ background: `${service.accentColor}15`, color: service.accentColor }}>
-          <ArrowUpRight size={14} />
+
+        <div>
+          <h3 className="text-lg font-bold mb-2 text-white">{service.title}</h3>
+          <p className="text-sm leading-relaxed mb-4 text-gray-100">{service.description}</p>
+          <div className="flex flex-wrap gap-1.5">
+            {service.tags.map((tag) => (
+              <span key={tag} className="text-[10px] px-2 py-1 rounded-md font-medium font-mono backdrop-blur-sm" style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)", color: "#ffffff" }}>
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <h3 className="text-base font-bold mb-2.5 font-heading relative z-10" style={{ color: "#111827" }}>
-        {service.title}
-      </h3>
-      <p className="text-sm leading-relaxed mb-5 font-body relative z-10" style={{ color: "#4B5563" }}>
-        {service.description}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 relative z-10">
-        {service.tags.map((tag) => (
-          <span key={tag} className="text-[11px] px-2.5 py-0.5 rounded-md font-medium font-mono" style={{ background: "#F3F4F6", border: "1px solid #D1D5DB", color: "#6B7280" }}>
-            {tag}
-          </span>
-        ))}
-      </div>
-
+      {/* Bottom Border Accent */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ background: `linear-gradient(90deg, ${service.accentColor}, transparent)` }} />
     </motion.div>
   );
