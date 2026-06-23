@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
-import { Globe, Smartphone, Code2, BarChart3, FileText, Settings, ArrowUpRight } from "lucide-react";
+import { Globe, Smartphone, Code2, BarChart3, FileText, Settings, MessageCircle, ArrowUpRight } from "lucide-react";
 
 const services = [
   { icon: Globe, title: "Website Development", description: "Blazing-fast, SEO-optimized websites and web apps. From elegant landing pages to enterprise portals, built with modern technology stacks.", accentColor: "#059669", tags: ["Next.js", "React", "SEO", "Responsive"] },
@@ -11,6 +11,7 @@ const services = [
   { icon: BarChart3, title: "CRM Solutions", description: "End-to-end Customer Relationship Management systems to streamline your sales pipeline, automate follow-ups, and gain deep client insights.", accentColor: "#059669", tags: ["CRM", "Automation", "Analytics", "WhatsApp"] },
   { icon: Settings, title: "ERP Systems", description: "Comprehensive Enterprise Resource Planning platforms connecting Finance, HR, Inventory, and Operations in a single unified workflow.", accentColor: "#059669", tags: ["ERP", "Finance", "HR", "Multi-branch"] },
   { icon: FileText, title: "Billing & Inventory Software", description: "GST-compliant billing, invoicing, and inventory management systems purpose-built for retail, wholesale, and manufacturing businesses.", accentColor: "#059669", tags: ["GST", "Invoicing", "Inventory", "E-Invoice"] },
+  { icon: MessageCircle, title: "WhatsApp Bot Development", description: "Intelligent WhatsApp bots to automate customer support, lead generation, and order management. AI-powered conversations that convert, scale, and engage your audience 24/7.", accentColor: "#059669", tags: ["WhatsApp API", "Chatbot", "AI", "Automation"] },
 ];
 
 function ServiceCard({ service, index, inView }: { service: typeof services[0]; index: number; inView: boolean }) {

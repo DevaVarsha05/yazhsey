@@ -363,7 +363,7 @@ export default function Solutions() {
             {/* Right — Zoho CRM Form or Dashboard */}
             {active === "crm" ? (
               <ZohoLeadForm activeSolution={activeSolution} />
-            ) : (
+            ) :  (
               // Simple visualization for ERP, Billing, and Analytics
               <motion.div
                 whileHover={{ scale: 1.02 }}
