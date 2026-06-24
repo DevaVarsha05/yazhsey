@@ -93,7 +93,7 @@ export default function Portfolio() {
       ref={ref}
       id="portfolio"
       className="relative py-28 overflow-hidden"
-      style={{ background: "#181A1B" }}
+      style={{ background: "#F0FDF4" }}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Header */}
@@ -108,10 +108,10 @@ export default function Portfolio() {
             <span>Portfolio</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <h2 className="text-3xl sm:text-5xl font-black font-heading" style={{ color: "#E5E7EB" }}>
+            <h2 className="text-3xl sm:text-5xl font-black font-heading" style={{ color: "#064E3B" }}>
               Work That <span className="gradient-text">Speaks For Itself</span>
             </h2>
-            <p className="sm:max-w-xs text-sm font-body" style={{ color: "#9CA3AF" }}>
+            <p className="sm:max-w-xs text-sm font-body" style={{ color: "#065F46" }}>
               A curated selection of projects we&apos;ve crafted for clients across industries.
             </p>
           </div>
@@ -132,9 +132,9 @@ export default function Portfolio() {
               whileTap={{ scale: 0.96 }}
               className="px-5 py-2 rounded-xl text-sm font-semibold font-body"
               style={{
-                background: activeFilter === f ? "#059669" : "transparent",
-                border:     activeFilter === f ? "1px solid #059669" : "1px solid #2D3134",
-                color:      activeFilter === f ? "#181A1B"  : "#9CA3AF",
+                background: activeFilter === f ? "#064E3B" : "transparent",
+                border:     activeFilter === f ? "1px solid #064E3B" : "1px solid #A7F3D0",
+                color:      activeFilter === f ? "#F0FDF4"  : "#065F46",
                 boxShadow:  activeFilter === f ? "0 0 16px rgba(5,150,105,0.2)" : "none",
               }}
             >
@@ -157,17 +157,18 @@ export default function Portfolio() {
                 whileHover={{ y: -4 }}
                 className="group relative p-6 rounded-2xl cursor-pointer overflow-hidden"
                 style={{
-                  background: "#222527",
-                  border: "1px solid #2D3134",
+                  background: "linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%)",
+                  border: "1px solid #A7F3D0",
                   transition: "all 0.2s ease-in-out",
+                  boxShadow: "0 4px 12px rgba(6, 79, 59, 0.08)"
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = `${project.accentColor}35`;
-                  (e.currentTarget as HTMLDivElement).style.boxShadow   = `0 0 24px ${project.accentColor}08`;
+                  (e.currentTarget as HTMLDivElement).style.borderColor = `${project.accentColor}`;
+                  (e.currentTarget as HTMLDivElement).style.boxShadow   = `0 16px 40px rgba(6, 79, 59, 0.15)`;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = "#2D3134";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow   = "none";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "#A7F3D0";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow   = "0 4px 12px rgba(6, 79, 59, 0.08)";
                 }}
               >
                 {/* Thumbnail */}
@@ -187,17 +188,17 @@ export default function Portfolio() {
                     className="absolute top-2 right-2 p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: project.accentColor }}
                   >
-                    <ExternalLink size={11} style={{ color: "#181A1B" }} />
+                    <ExternalLink size={11} style={{ color: "#FFFFFF" }} />
                   </div>
                 </div>
 
-                <div className="text-[11px] font-semibold uppercase tracking-wider mb-1 font-mono" style={{ color: "#6B7280" }}>
+                <div className="text-[11px] font-semibold uppercase tracking-wider mb-1 font-mono" style={{ color: "#065F46" }}>
                   {project.meta}
                 </div>
-                <h3 className="text-base font-bold mb-2 font-heading" style={{ color: "#E5E7EB" }}>
+                <h3 className="text-base font-bold mb-2 font-heading" style={{ color: "#064E3B" }}>
                   {project.title}
                 </h3>
-                <p className="text-sm leading-relaxed mb-4 font-body" style={{ color: "#9CA3AF" }}>
+                <p className="text-sm leading-relaxed mb-4 font-body" style={{ color: "#065F46" }}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5">

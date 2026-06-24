@@ -221,27 +221,39 @@ export default function Solutions() {
     <section
       ref={ref}
       id="solutions"
-      className="relative py-28 overflow-hidden"
-      style={{ background: "#FFFFFF", position: "relative" }}
+      className="relative py-28 overflow-hidden bg-[#D0EDD7]/30 backdrop-blur-sm"
+      style={{ position: "relative" }} 
     >
-      {/* Ambient glow */}
-      <div
-        className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
-        style={{ background: `radial-gradient(circle, ${activeSolution.accentColor}10 0%, transparent 70%)` }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
-        style={{ background: `radial-gradient(circle, ${activeSolution.accentColor}10 0%, transparent 70%)` }}
-      />
+     <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "#A7F3D0" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "#A7F3D0" }} />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65 }}
           className="text-center mb-14"
         >
+          <div className="pill mb-5 mx-auto" style={{ display: "inline-flex" }}>
+            <TrendingUp size={12} style={{ color: "#059669" }} />
+            <span>Our Solutions</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black font-heading" style={{ color: "#064E3B" }}>
+            Purpose-Built <span className="gradient-text">Business Software</span>
+          </h2>
+          <p className="mt-4 max-w-lg mx-auto text-sm font-body" style={{ color: "#065F46" }}>
+            Explore our flagship products designed specifically for Indian businesses — from startups to enterprises.
+          </p>
+        </motion.div>
+
+        {/* Tab Selector */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.18, duration: 0.55 }}
+          className="flex flex-wrap justify-center gap-2.5 mb-12"
+        >
+          
           <div className="pill mb-5 mx-auto" style={{ display: "inline-flex" }}>
             <TrendingUp size={12} style={{ color: activeSolution.accentColor }} />
             <span>Our Solutions</span>

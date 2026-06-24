@@ -28,7 +28,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#E5E7EB" }}>
       {/* Top Accent Line */}
-      <div
+     <div
         className="h-[1px]"
         style={{ background: "linear-gradient(90deg, transparent, #059669, transparent)" }}
       />

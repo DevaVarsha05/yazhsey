@@ -58,11 +58,11 @@ export default function Navbar() {
             </div>
             <div>
               <div className="text-[15px] font-black tracking-tight font-heading" style={{ color: scrolled ? "#111827" : "#E5E7EB" }}>
-                Yazh<span className="gradient-text">Sey</span>
+                Yazh<span className="gradient-text"  style={{ color: "#065f46" }}>Sey</span>
               </div>
-              <div className="text-[9px] font-semibold tracking-[0.2em] uppercase font-mono" style={{ color: "#9CA3AF" }}>
-                Technologies
-              </div>
+           <div className="text-[9px] font-semibold tracking-[0.2em] uppercase font-mono" style={{ color: "#065f46" }}>
+  Technologies
+</div>
             </div>
           </motion.a>
 
@@ -79,7 +79,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * i + 0.1, duration: 0.5, ease: "easeOut" }}
                   className="relative px-4 py-2 text-sm font-medium font-body transition-all duration-300 rounded-lg cursor-pointer"
-                  style={{ color: isActive ? "#059669" : "#9CA3AF" }}
+                 style={{ color: isActive ? "#065f46" : "#065f46" }} 
                   onMouseEnter={(e) => {
                     if (!isActive) {
                       e.currentTarget.style.color = "#059669";
@@ -88,8 +88,8 @@ export default function Navbar() {
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.color = "#9CA3AF";
-                      e.currentTarget.style.textShadow = "none";
+                      e.currentTarget.style.color = "#047857";
+                     e.currentTarget.style.textShadow = "0 0 6px rgba(4,120,87,0.8)";
                     }
                   }}
                 >
@@ -164,10 +164,10 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.04 * i }}
                   className="relative px-4 py-3 text-sm font-medium rounded-xl font-body flex items-center transition-all duration-200 cursor-pointer"
-                  style={{ 
-                    color: activeLink === link.href ? "#059669" : "#9CA3AF",
-                    background: activeLink === link.href ? "rgba(5,150,105,0.06)" : "transparent"
-                  }}
+                 style={{ 
+      color: activeLink === link.href ? "#065f46" : "#065f46", 
+      background: activeLink === link.href ? "rgba(6, 95, 70, 0.1)" : "transparent"
+    }}
                   onMouseEnter={(e) => {
                     if (activeLink !== link.href) {
                       e.currentTarget.style.background = "rgba(255,255,255,0.02)";

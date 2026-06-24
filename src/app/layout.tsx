@@ -35,10 +35,13 @@ export default function RootLayout({
       </head>
       <body 
         style={{ 
-          background: "#FFFFFF",
-          color: "#111827",
-          position: "relative", // Fix: Global relative anchor layout matrix injection for core elements positioning reference
-          minHeight: "100vh"
+         // Use backgroundColor instead of shorthand
+   backgroundImage: "url('/home.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "top",
+  backgroundRepeat: "no-repeat",
+  backgroundAttachment: "fixed", // 'scroll' nu irundha image move aagum, 'fixed' nu kudutha image static-a irukkum
+  minHeight: "100vh"
         }}
       >
         {children}
