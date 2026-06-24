@@ -87,7 +87,7 @@ export default function Hero() {
     backgroundImage: `url('/home.png')`, 
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundAttachment: "fixed"
+    backgroundRepeat: "no-repeat"
   }}
     >
       <div className="absolute inset-0 tech-grid-bg pointer-events-none" />
