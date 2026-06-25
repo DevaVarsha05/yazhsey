@@ -220,6 +220,19 @@ export default function Hero() {
       {/* Main Content */}
       <motion.div style={{ y, opacity, position: "relative" }} className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center">
         <motion.div variants={container} initial="hidden" animate="visible" className="flex flex-col items-center gap-8">
+          {/* Logo */}
+          <motion.div
+            variants={item}
+            className="flex justify-center mb-2"
+          >
+            <img
+              src="/logo-white.png"
+              alt="YazhSey Logo"
+              className="h-16 sm:h-20 w-auto"
+              style={{ filter: "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))" }}
+            />
+          </motion.div>
+
           {/* Tagline */}
           <motion.div
             variants={item}
