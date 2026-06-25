@@ -1,10 +1,17 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import { Users, HeartHandshake, Zap, Building2, BadgeCheck, MapPin } from "lucide-react";
 
-const usps = [
+interface USP {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  color: string;
+}
+
+const usps: USP[] = [
   {
     icon: HeartHandshake,
     title: "Personalized Service",
@@ -35,144 +42,176 @@ const usps = [
   },
 ];
 
+// --- ANIMATION VARIANTS (Video Style) ---
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+  },
+};
+
+const slideRightVariants: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const fadeInVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const imageZoomVariants: Variants = {
+  hidden: { opacity: 0, scale: 1.05 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 export default function About() {
-  const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  // Trigger animation when in view or on navigation
+  useEffect(() => {
+    if (isInView) {
+      setShouldAnimate(true);
+    }
+  }, [isInView]);
+
+  // Trigger on header navigation click
+  useEffect(() => {
+    const handleNavClick = () => {
+      if (window.location.hash === "#about") {
+        setShouldAnimate(true);
+      }
+    };
+
+    window.addEventListener("hashchange", handleNavClick);
+    return () => window.removeEventListener("hashchange", handleNavClick);
+  }, []);
 
   return (
     <section
       ref={ref}
       id="about"
-      className="relative py-28 overflow-hidden bg-[#D0EDD7]/30 backdrop-blur-sm"
- 
-  style={{ position: "relative" }}
+      className="relative py-28 overflow-hidden bg-[#D0EDD7]/30"
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "#A7F3D0" }} />
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "#A7F3D0" }} />
-
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        
-        {/* Section Header */}
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65 }}
-          >
-            <div className="pill mb-5">
-              <Users size={12} style={{ color: "#059669" }} />
-              <span>About Us</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black font-heading leading-tight" style={{ color: "#064E3B" }}>
-              Built for Trust, <br />
-              <span className="gradient-text">Engineered for Impact</span>
-            </h2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="space-y-4"
-          >
-            <p className="text-sm leading-relaxed font-body" style={{ color: "#065F46" }}>
-              Founded in Dindigul, Tamil Nadu, YazhSey Technologies is built on the premise that premium software development should be accessible, transparent, and highly personalized for businesses of all sizes.
-            </p>
-            <div className="flex items-center gap-2 text-xs font-semibold font-mono" style={{ color: "#059669" }}>
-              <MapPin size={14} /> Dindigul, Tamil Nadu, India
-            </div>
-          </motion.div>
-        </div>
-
-        {/* USPs Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {usps.map((usp, i) => {
-            const Icon = usp.icon;
-            return (
-              <motion.div
-                key={usp.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.12, duration: 0.6 }}
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -8, 
-                  boxShadow: "0 20px 40px rgba(6, 79, 59, 0.15)" 
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between border transition-all duration-300 cursor-pointer"
-                style={{ 
-                  background: "linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%)",
-                  borderColor: "#A7F3D0",
-                  boxShadow: "0 4px 12px rgba(6, 79, 59, 0.08)"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${usp.color}`;
-                  e.currentTarget.style.boxShadow = `0 20px 40px rgba(6, 79, 59, 0.15)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#A7F3D0";
-                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(6, 79, 59, 0.08)";
-                }}
-              >
-                <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
-          style={{ 
-            background: `radial-gradient(400px circle at center, ${usp.color}15, transparent 70%)`,
-            filter: "blur(20px)" 
-          }} 
-        />
-                <div className="mb-6 flex justify-between items-start">
-                  <div className="p-3.5 rounded-2xl" style={{ background: `${usp.color}12`, border: `1px solid ${usp.color}25` }}>
-                    <Icon size={24} style={{ color: usp.color }} />
-                  </div>
-                  <div className="text-[10px] font-bold font-mono px-2 py-1 rounded" style={{ background: "#A7F3D0", color: "#064E3B" }}>
-                    0{i + 1}
-                  </div>
-                </div>
-
-                <h3 className="text-base font-black mb-3 font-heading" style={{ color: "#064E3B" }}>
-                  {usp.title}
-                </h3>
-                <p className="text-xs leading-relaxed font-body" style={{ color: "#065F46" }}>
-                  {usp.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Badges */}
+        {/* Top Section - Image + Text */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.55 }}
-          className="grid sm:grid-cols-3 gap-4"
+          className="grid lg:grid-cols-2 gap-16 items-center mb-20"
+          initial="hidden"
+          animate={shouldAnimate ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          {[
-            { label: "GST Registration",  value: "33CGSPK6933J1ZV",    icon: "🏛️", color: "#059669", sub: "Tamil Nadu State" },
-            { label: "Udyam Registration", value: "UDYAM-TN-06-0116309", icon: "🏆", color: "#059669", sub: "Ministry of MSME, India" },
-            { label: "Enterprise Type",   value: "Micro Enterprise",    icon: "⚡", color: "#065F46", sub: "Proprietorship — Kavivarthini" },
-          ].map((badge) => (
-            
-            <div
-              key={badge.label}
-              className="p-6 rounded-2xl"
-              style={{ background: "#FFFFFF", border: `1px solid #A7F3D0`, boxShadow: "0 2px 8px rgba(6,79,59,0.04)" }}
+          {/* Image with zoom effect */}
+          <motion.div
+            variants={imageZoomVariants}
+            className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+          >
+            <img
+              src="/about us.jpg"
+              alt="Team Collaboration"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+
+          {/* Text Content - Slide up */}
+          <motion.div variants={containerVariants}>
+            <motion.div
+              variants={slideRightVariants}
+              className="pill mb-5 inline-flex items-center gap-2"
             >
-              <div className="text-2xl mb-3">{badge.icon}</div>
-              <div className="text-[10px] uppercase tracking-widest font-semibold mb-1 font-mono" style={{ color: "#065F46" }}>
-                {badge.label}
-              </div>
-              <div className="text-sm font-bold font-mono mb-1" style={{ color: badge.color }}>
-                {badge.value}
-              </div>
-              <div className="text-[10px] font-medium font-body" style={{ color: "#065F46" }}>
-                {badge.sub}
-              </div>
-            </div>
-          ))}
+              <Users size={12} style={{ color: "#059669" }} />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#064E3B]">
+                About Us
+              </span>
+            </motion.div>
+
+            <motion.h2
+              variants={slideRightVariants}
+              className="text-4xl sm:text-5xl font-black font-heading leading-tight mb-6"
+              style={{ color: "#064E3B" }}
+            >
+              Built for Trust, <br />
+              <span className="text-[#059669]">Engineered for Impact</span>
+            </motion.h2>
+
+            <motion.p
+              variants={slideRightVariants}
+              className="text-lg leading-relaxed font-body mb-8 text-[#065F46]"
+            >
+              Founded in Dindigul, Tamil Nadu, YazhSey Technologies is built on
+              the premise that premium software development should be accessible,
+              transparent, and highly personalized for businesses of all sizes.
+            </motion.p>
+
+            <motion.div
+              variants={slideRightVariants}
+              className="flex items-center gap-3 text-sm font-semibold font-mono text-[#059669]"
+            >
+              <MapPin size={18} /> <span>Dindigul, Tamil Nadu, India</span>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
+        {/* USPs Grid - Video Style Animation */}
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate={shouldAnimate ? "visible" : "hidden"}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+            },
+          }}
+        >
+          {usps.map((usp) => (
+            <motion.div
+              key={usp.title}
+              variants={slideRightVariants}
+              className="p-8 rounded-2xl border bg-white/50 backdrop-blur-sm hover:bg-white/70 transition-all duration-300"
+              style={{ borderColor: "#A7F3D0" }}
+            >
+              {/* Icon with fade-in */}
+              <motion.div
+                variants={fadeInVariants}
+                className="mb-6 p-3 w-12 rounded-xl"
+                style={{ background: `${usp.color}12` }}
+              >
+                <usp.icon size={24} style={{ color: usp.color }} />
+              </motion.div>
+
+              {/* Title */}
+              <motion.h3
+                variants={slideRightVariants}
+                className="text-base font-black mb-3 text-[#064E3B]"
+              >
+                {usp.title}
+              </motion.h3>
+
+              {/* Description */}
+              <motion.p
+                variants={fadeInVariants}
+                className="text-xs leading-relaxed text-[#065F46]"
+              >
+                {usp.description}
+              </motion.p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
