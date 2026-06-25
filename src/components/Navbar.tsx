@@ -54,7 +54,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.98 }}
           >
             <Image 
-              src="/logo.png" 
+              src="=/logo-white.png" 
               alt="YazhSey Technologies" 
               width={42}
               height={42}
