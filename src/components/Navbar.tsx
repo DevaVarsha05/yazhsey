@@ -53,14 +53,9 @@ export default function Navbar() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Image 
-              src="=/logo-white.png" 
-              alt="YazhSey Technologies" 
-              width={42}
-              height={42}
-              className="object-contain"
-              priority 
-            />
+            <div className="relative flex-shrink-0" style={{ width: 42, height: 42 }}>
+              <Image src="/logo.png" alt="YazhSey Technologies" fill className="object-contain" priority />
+            </div>
             <div>
               <div className="text-[15px] font-black tracking-tight font-heading" style={{ color: scrolled ? "#111827" : "#E5E7EB" }}>
                 Yazh<span className="gradient-text"  style={{ color: "#065f46" }}>Sey</span>
