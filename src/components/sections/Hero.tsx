@@ -29,9 +29,7 @@ export default function Hero() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
   const backgroundImages = [
-    "/home.png",
-    "/background 1.jpg",
-    "/background 2.png"
+    "/home.png"
   ];
 
   useEffect(() => {
